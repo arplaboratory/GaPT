@@ -1,1 +1,1 @@
-# GaPT: Gaussian Processes Toolkit for Fast Robotics Inference, Planning, and Control
+# GaPT: Gaussian Process Toolkit for Online Regression with Application to Learning Quadrotor Dynamics

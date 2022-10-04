@@ -1,0 +1,66 @@
+{
+    "SESSION_NAME": "RESIDUAL_MISO",
+
+
+    "SEEDS":{
+        "numpy": 12345,
+        "torch": 12345
+    },
+    "REGRESSORS":{
+        "used": ["RBFModel"]
+    },
+
+    "KPOINTS":{
+        "pt_min": 3,
+        "pt_max": 1100,
+        "sampled_pts" : 25,
+        "base": 3
+    },
+
+    "DATASET":{
+        "train": {
+            "class": "Arpl",
+            "args": {
+              "csv_path": "../../data/arpl/train/circle_10.csv",
+              "x_col_label": ["v_y_t","u_0_t", "u_1_t", "u_2_t", "u_3_t"],
+              "y_col_label": "res_vdot_y",
+              "t_col_label": "t",
+              "alias": "circle_10",
+              "start_ix": 0,
+              "end_ix": -1
+            }
+        },
+
+         "test": {
+            "class": "Arpl",
+            "args":{
+              "csv_path": "../../data/arpl/test/oval_10.csv",
+              "x_col_label": ["v_y_t","u_0_t", "u_1_t", "u_2_t", "u_3_t"],
+              "y_col_label": "res_vdot_y",
+              "t_col_label": "t",
+              "alias": "oval_10",
+              "start_ix": 0,
+              "end_ix": -1
+            }
+        }
+    },
+
+    "GPT_MODEL": {
+            "epochs": 50,
+            "k_training_points": 3000,
+            "optimizer": {
+                "type": "SGD",
+                "args": {
+                    "lr": 0.1,
+                    "momentum": 0.2,
+                    "dampening": 0,
+                    "weight_decay":0,
+                    "nesterov": false
+                }
+            }
+    },
+
+    "LOG": {
+        "conf_file": "configs/logger_conf.json"
+        }
+}

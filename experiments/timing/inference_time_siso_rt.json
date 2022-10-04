@@ -1,0 +1,55 @@
+{
+    "SESSION_NAME": "INFERENCE_TIME",
+
+    "SEEDS":{
+        "numpy": 12345,
+        "torch": 12345
+    },
+
+    "REGRESSORS":{
+        "used": ["PerRbfModel","RBFModel","Matern32Model"]
+    },
+
+    "KPOINTS":{
+        "pt_list": [9, 42, 189, 1230, 2601, 5501]
+    },
+
+    "N_MEASUREMENTS": {
+        "n_measurments": 8
+    },
+
+
+    "DATASET":{
+        "train": {
+            "class": "Arpl",
+            "args": {
+            "csv_path": "../../data/Arpl/test/line_10.csv",
+            "x_col_label": ["v_y_t"],
+            "y_col_label": "res_vdot_y",
+            "t_col_label": "t",
+            "alias": "data",
+            "start_ix": 0,
+            "end_ix": 8000
+            }
+        }
+    },
+
+    "GPT_MODEL": {
+            "epochs": 1,
+            "optimizer": {
+                "type": "SGD",
+                "args": {
+                    "lr": 0.1,
+                    "momentum": 0.9,
+                    "dampening": 0,
+                    "weight_decay":0,
+                    "nesterov": false
+                }
+            }
+    },
+
+    "LOG": {
+        "conf_file": "configs/logger_conf.json"
+        }
+}
+

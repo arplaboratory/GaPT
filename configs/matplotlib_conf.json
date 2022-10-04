@@ -1,0 +1,46 @@
+{
+    "figsize": [10.8, 5.4],
+    "font": {
+        "family": "sans-serif",
+        "weight": "normal",
+        "size": 22
+    },
+    "figure": {
+        "titleweight": "normal",
+        "autolayout": false
+    },
+
+    "subplots": {
+        "adjust": {
+            "top": 0.9
+        }
+    },
+
+    "xtick":{
+        "major":{
+            "pad": 2
+        }
+    },
+        "ytick":{
+        "major":{
+            "pad": 2
+        }
+    },
+
+    "axes":{
+        "labelweight": "normal",
+        "titleweight": "normal",
+        "titlesize" : 26,
+        "labelsize": 22,
+        "titlepad" : 2.0,
+        "labelpad": 2.0
+
+    },
+    "line_thickness": 3,
+    "marker_size": 3,
+    "pdf_fonttype": 42,
+    "ps_fonttype": 42,
+    "colors": ["#365282",  "#e84c53", "#92ba92", "#edb120", "#7d7376", "#000000", "#21d417", "#b442cd"],
+    "extra_linestyles": ["solid", "dashed", "dashdot", "dotted", "None"],
+    "markers": ["<", "+", "*", "x", "v", "^", ">", ".", "None", "o"]
+}

@@ -1,7 +1,7 @@
 import logging
 import gpytorch
-from base.pssgp.kalman import KalmanSISO, KalmanMISO
-from base.pssgp.kernels import Periodic
+from base.gapt.kalman import KalmanSISO, KalmanMISO
+from base.gapt.kernels import Periodic
 from base.regressor import GPRegressor
 
 

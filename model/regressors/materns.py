@@ -1,6 +1,6 @@
 import gpytorch
-from base.pssgp.kalman import KalmanSISO, KalmanMISO
-from base.pssgp.kernels import Matern12, Matern32, Matern52
+from base.gapt.kalman import KalmanSISO, KalmanMISO
+from base.gapt.kernels import Matern12, Matern32, Matern52
 from base.regressor import GPRegressor
 import logging
 r"""

@@ -1,6 +1,6 @@
 import gpytorch
-from base.pssgp.kalman import KalmanSISO, KalmanMISO
-from base.pssgp.kernels import RBF
+from base.gapt.kalman import KalmanSISO, KalmanMISO
+from base.gapt.kernels import RBF
 from base.regressor import GPRegressor
 import logging
 

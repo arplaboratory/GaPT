@@ -46,7 +46,7 @@
 
 
     "GPT_MODEL": {
-            "epochs": 30,
+            "epochs": 1,
             "k_training_points":1500,
             "optimizer": {
                 "type": "SGD",

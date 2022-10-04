@@ -10,7 +10,6 @@ from base.data.data_loader import GPDataLoader
 from base.gpytgp.gppyt_trainer import GPYTrainer
 from torch import optim
 from tools.misc import siso_binary_search, distance_3d
-import time
 
 
 class GPRegressor(metaclass=abc.ABCMeta):
@@ -60,7 +59,6 @@ class GPRegressor(metaclass=abc.ABCMeta):
         else:
             logging.warning('{}: unable to set P0 of the (Kalman Filter),'
                             'the model has not been initialized.'.format(self.__name__))
-
 
     def train_hyperparams(self, train_dataloader: GPDataLoader, gp_training_conf, verbose=False):
         logging.debug('Training of the {} initialized'.format(self.__name__))
@@ -236,9 +234,6 @@ class GPRegressor(metaclass=abc.ABCMeta):
             msg = 'The model file  {} not found '.format(model_path)
             logging.error(msg)
             raise FileNotFoundError(msg)
-
-    def predict_kf_single(self, x_input: np.float):
-        pass
 
     @abc.abstractmethod
     def _create_sde_model(self):

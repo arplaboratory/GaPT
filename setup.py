@@ -3,10 +3,10 @@ import os
 import sys
 from distutils.version import StrictVersion
 
-# TODO CHANGE ACCORDING TO THE NEW PURPOSE
+# TODO REFACTORING
+
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
 
 if __name__ == "__main__":
     assert StrictVersion(
@@ -21,12 +21,11 @@ if __name__ == "__main__":
         name="GP_KF",
         version="0.0.1",
         author="Francesco Crocetti & Jeffrey Mao",
-        author_email="francesco.crocetti@unipg.it",
+        author_email="fc2353@nyu.edu",
         description="A library to easy deploy trajectories using kalman Filters instead Based on Gaussian Processes",
-        license="BSD",
         keywords="kalman Filters, Gaussian Processes, Machine Learning, Drone,",
         url="https://wp.nyu.edu/arpl/",
-        packages=['base', 'model', 'tools', 'debug'],
+        packages=['base', 'model', 'tools', 'configs'],
         long_description=read('README.md'),
         python_requires="==3.8",
         classifiers=[
@@ -40,8 +39,6 @@ if __name__ == "__main__":
         ],
         dependency_links=[
             'https://pypi.org/',
-            'https://storage.googleapis.com/tensorflow/linux/cpu'
-
 
         ],
         install_requires=requirements,

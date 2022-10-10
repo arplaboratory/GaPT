@@ -45,7 +45,7 @@ For this project we'll create Python 3.8 v-env called *'GPKF'* by using a .yaml 
 Go into the Installation folder and run the following command to create an empty environment
 config file.
 ```shell
-conda create -n GPKF python=3.8
+conda create -n GAPT python=3.8
 ```
 Before installing the required python packages, **the environment must be activated**.  
 **NOTE:** this action is required whenever you want to work with the desired environment.
@@ -53,16 +53,18 @@ Before installing the required python packages, **the environment must be activa
 ### Activate the environment:  
 
 ```shell
-conda activate GPKF
+conda activate GAPT
 ```
 ### Install extra conda packages:  
 ```shell
 conda install -c conda-forge empy
 ```
 ### Install the packages:  
+Be sure to have the latest version of Pip and install the requirements.
 
 ```shell
-python setup.py install
+pip install --upgrade pip
+pip install -r requirements.txt --find-links https://download.pytorch.org/whl/torch_stable.html
 ```
 
 **NOTE:** this action must be performed from the installation folder and with the venv active.

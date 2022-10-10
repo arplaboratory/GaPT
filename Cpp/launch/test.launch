@@ -1,0 +1,9 @@
+<launch>
+
+  <node pkg="gp_kalmann" type = "gp_kalmann" 
+    name = "gp_kalmann" output = "screen"  clear_params="true" >
+    <rosparam command="load" file="$(find gp_kalmann)/launch/model_params.yaml"/>
+  </node>
+
+
+</launch>

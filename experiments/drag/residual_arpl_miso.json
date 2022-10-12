@@ -10,18 +10,11 @@
         "used": ["RBFModel"]
     },
 
-    "KPOINTS":{
-        "pt_min": 3,
-        "pt_max": 1100,
-        "sampled_pts" : 25,
-        "base": 3
-    },
-
     "DATASET":{
         "train": {
             "class": "Arpl",
             "args": {
-              "csv_path": "../../data/arpl/train/circle_10.csv",
+              "csv_path": "data/arpl/train/circle_10.csv",
               "x_col_label": ["v_y_t","u_0_t", "u_1_t", "u_2_t", "u_3_t"],
               "y_col_label": "res_vdot_y",
               "t_col_label": "t",
@@ -34,7 +27,7 @@
          "test": {
             "class": "Arpl",
             "args":{
-              "csv_path": "../../data/arpl/test/oval_10.csv",
+              "csv_path": "data/arpl/test/oval_10.csv",
               "x_col_label": ["v_y_t","u_0_t", "u_1_t", "u_2_t", "u_3_t"],
               "y_col_label": "res_vdot_y",
               "t_col_label": "t",

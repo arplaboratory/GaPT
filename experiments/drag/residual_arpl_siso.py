@@ -36,7 +36,6 @@ seeds_config = config.SEEDS
 gpytorch_config = config.GPT_MODEL
 session_id = config.SESSION_NAME
 log_config = config.LOG
-kpts_config = config.KPOINTS
 
 # SESSION NAME
 session_name = session_id

@@ -37,9 +37,8 @@ which is the core of the GaPT Framework.
 the installation will be automated, now the file requirements.txt is just a freeze of the original virtual environment.
 - Upcoming updates: Installation procedure for desktop x86 devices and Nvidia ARM64 architecture devices. 
 ## Installation
-By using anaconda3, it is possible to create different and isolates (like sand boxes) python environments.
-During the creation phase it is also pissible to select the version of the interpreter.   
-For this project we'll create Python 3.8 v-env called *'GPKF'* by using a .yaml config file:  
+The following installation procedure uses Anaconda3, that allow to create different and isolated python environments.
+If you don't have it, please see the installation guide: https://www.anaconda.com/products/distribution .
 
 ### Create the environment
 Go into the Installation folder and run the following command to create an empty environment
@@ -55,27 +54,31 @@ Before installing the required python packages, **the environment must be activa
 ```shell
 conda activate GAPT
 ```
-### Install extra conda packages:  
-```shell
-conda install -c conda-forge empy
-```
-### Install the packages:  
-Be sure to have the latest version of Pip and install the requirements.
 
+### Install the requirements
+Be sure to have the latest version of Pip and install the requirements.
 ```shell
 pip install --upgrade pip
-pip install -r requirements.txt --find-links https://download.pytorch.org/whl/torch_stable.html
+conda install -c conda-forge empy
+pip install -r requirements.txt -f https://download.pytorch.org/whl/cpu/torch_stable.html
 ```
 
 **NOTE:** this action must be performed from the installation folder and with the venv active.
 
-## Execution:
-The '*experiments*' folder contains two subdirectories that contain the example code to use the GaPt toolkit and to perform 
-some benchmarks. Note that each file needs the relative .json config file that can be passed as argument:
+## Testing the installation:
+The '*experiments*' folder contains two subdirectories with the example code to use the GaPt and to perform 
+some benchmarks. Note that each file needs the relative .json config file that can be passed as argument.
 
+**NOTE:** this action must be performed from the Root folder of the repository and with the venv active.
+
+To run the experiment, run the following command from the root of the project:
 ```shell
-python -m <script_file>.py -c <config_file>.json. 
+python -m experiments.<folder>.<experiments_name> -c <path_to_config_file>.json. 
 ```
-**NOTE:** this action must be performed from the installation folder (Root) and with the venv active.
-
- 
+For example to run the test for the SISO regression:
+```shell
+python -m experiments.drag.residual_arpl_siso -c experiments/drag/residual_arpl_siso.json
+```
+**NOTE:** If you run the code using and IDE (i.e. Pycharm) the paths in the .json config file may be changed 
+using the absolute path and the path of the config file with the -c flag have to be included in the 'Parameter'
+field of the script configuration. 

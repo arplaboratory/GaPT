@@ -2,7 +2,7 @@
 
 This repository details the GP Kalmann Filter. Currently, it has no inputs and simply outputs a Gaussian Process Test of the drag data in test_demo.launch. To change the parameters we simply change the model_params.yaml in the launch foulder
 
-Please note: This State Space version assume this is a Single input Single output Gaussian Process. It is Much More Complex to convert a  multidimensional Gaussian Process to a Kalmann Filter. 
+Please note: This State Space version assume this is a Single input Single output Gaussian Process. 
 
 # Installation
   
@@ -22,10 +22,12 @@ Visaulizes the output of the GP Kalmann Filter. Expected Output should be a grap
 $ roslaunch gp_kalmann test.launch
 ```
 
-Hyperparameters created from this repository. Which is a clone of another paper. https://github.com/arplaboratory/python_gp_kalman_hyperparam
+Hyperparameters created from this parent directory GaPT
 
 # Launch File Parameters
-For now, we assume you have solved the Linear Model Approximation of the GP based on the following slides http://gpss.cc/gpss13/assets/Sheffield-GPSS2013-Sarkka.pdf
+For now, we assume you have solved the Linear Model Approximation of the GP based on the following link Arxiv Paper:
+
+
 This means you have a Kalmann Filter of parameters. Where X is a vector consiting of your output value and its higher order derivatives in the following state. X_dot is the the time derivative of X. Don't worry this model takes care of handling a contiuous time model in the back.
 
 X_dot = Fx+Lu  

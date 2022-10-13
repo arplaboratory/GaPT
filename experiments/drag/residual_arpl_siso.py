@@ -372,6 +372,7 @@ val_tr_used = [t_tr_kal_sorted, x_tr_kal_sorted, y_tr_kal_sorted, rollback_index
 columns_ts = [testing_unscaled.t_column, testing_unscaled.x_column[0], testing_unscaled.y_column,
               "gpt_pred_mean_ts", "gpt_pred_lower_ts", "gpt_pred_upper_ts",
               "kf_pred_mean_ts", "kf_pred_lower_ts", "kf_pred_upper_ts"]
+
 val_ts = [testing_unscaled.timestamp.numpy(), testing_unscaled.X.squeeze().numpy(),
           testing_unscaled.Y.squeeze().numpy(),
           gpt_pred_mean_ts.numpy(), gpt_pred_lower_ts.numpy(), gpt_pred_upper_ts.numpy(),
@@ -411,8 +412,8 @@ L = discrete_model[2].numpy().flatten().tolist()
 H = discrete_model[3].numpy().flatten().tolist()
 Q = (discrete_model[4].numpy()).flatten().tolist()
 
-xtrain_yaml = x_tr_kal.flatten().tolist()
-ytrain_yaml = y_tr_kal.flatten().tolist()
+xtrain_yaml = x_tr_kal_sorted.flatten().tolist()
+ytrain_yaml = y_tr_kal_sorted.flatten().tolist()
 R = float(model._kf.R)
 Order = int(model._order)
 meanY_yaml = np.mean(training_unscaled.Y.numpy())
@@ -427,8 +428,8 @@ dict_file = {"axis": "y_drag",
                  "L": L,
                  "H": H,
                  "Q": Q,
-                 "xtrain": x_tr_kal_sorted,
-                 "ytrain": y_tr_kal_sorted,
+                 "xtrain": xtrain_yaml,
+                 "ytrain": ytrain_yaml,
                  "meanY": float(meanY_yaml),
                  "std": float(std_yaml),
              }

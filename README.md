@@ -81,4 +81,7 @@ python -m experiments.drag.residual_arpl_siso -c experiments/drag/residual_arpl_
 ```
 **NOTE:** If you run the code using and IDE (i.e. Pycharm) the paths in the .json config file may be changed 
 using the absolute path and the path of the config file with the -c flag have to be included in the 'Parameter'
-field of the script configuration. 
+field of the script configuration.
+
+
+The output of the scripts are in the out foulder they include.....

@@ -161,11 +161,12 @@ gpt_pred_upper_ts = gpt_pred_upper_ts * std_y_tr
 # get the training dataset
 x_tr_kal = training_dataset.X.numpy()
 y_tr_kal = training_dataset.Y.numpy()
+t_tr_kal = training_dataset.timestamp.numpy()
 
 # Select the training subset used for the kalman filter
 x_tr_kal = x_tr_kal[1200:4800]
 y_tr_kal = y_tr_kal[1200:4800]
-
+t_tr_kal = t_tr_kal[1200:4800]
 
 # Sort the indexes
 index_tr = np.argsort(x_tr_kal[:, 0])
@@ -174,11 +175,12 @@ index_tr = np.argsort(x_tr_kal[:, 0])
 
 # Get the rollback indexes
 rollback_indexes_tr = np.empty_like(index_tr)
-rollback_indexes_tr[index_tr] = np.arange(index_tr.size)
+rollback_indexes_tr[index_tr] = np.arange(index_tr.size, dtype=int)
 
 # Sort the training dataset used for the prediction matching
 x_tr_kal_sort = x_tr_kal[index_tr]
 y_tr_kal_sort = y_tr_kal[index_tr]
+t_tr_kal_sort = t_tr_kal[index_tr]
 
 # Predict
 kf_pred_mean_tr, kf_pred_lower_tr, kf_pred_upper_tr = model.predict_kf_miso(x_training=x_tr_kal_sort,
@@ -414,7 +416,7 @@ fig.savefig(path, format="pdf", bbox_inches="tight")
 model.dump_model(folder_model_out.path)
 
 # - Create the dataframes
-# TRAIN
+# Training dataset
 columns_tr = ["gpt_pred_mean_tr", "gpt_pred_lower_tr", "gpt_pred_upper_tr",
               "kf_pred_mean_tr", "kf_pred_lower_tr", "kf_pred_upper_tr"]
 val_tr = [gpt_pred_mean_tr.numpy(), gpt_pred_lower_tr.numpy(), gpt_pred_upper_tr.numpy(),
@@ -429,6 +431,10 @@ for i in range(len(training_unscaled.x_column)):
 
 columns_tr.append(training_unscaled.y_column)
 val_tr.append(training_unscaled.Y.numpy())
+
+# Training dataset used for the update fase on the KF
+columns_tr_used = ["t_tr_sort_scal_KF", "x_tr_sort_scal_KF", "y_tr_sort_scal_KF", 'desorting_indexes']
+val_tr_used = [t_tr_kal_sort, x_tr_kal_sort, y_tr_kal_sort, rollback_indexes_tr]
 
 # test dataset
 columns_ts = ["gpt_pred_mean_ts", "gpt_pred_lower_ts", "gpt_pred_upper_ts",
@@ -451,6 +457,11 @@ data_tr = np.asarray(val_tr).T
 data_frame_tr[columns_tr] = data_tr
 data_frame_tr.reset_index(drop=True)
 
+data_frame_tr_used = pd.DataFrame(columns=columns_tr_used)
+data_tr_used = np.vstack(val_tr_used).T
+data_frame_tr_used[columns_tr_used] = data_tr_used
+data_frame_tr_used.reset_index(drop=True)
+
 data_frame_ts = pd.DataFrame(columns=columns_ts)
 data_ts = np.asarray(val_ts).T
 data_frame_ts[columns_ts] = data_ts
@@ -459,6 +470,7 @@ data_frame_ts.reset_index(drop=True)
 # - Save the dataframe as .csv
 data_frame_tr.to_csv(Path(folder_csv_out.path, 'out_train.csv'), sep=',', index=False)
 data_frame_ts.to_csv(Path(folder_csv_out.path, 'out_test.csv'), sep=',', index=False)
+data_frame_tr_used.to_csv(Path(folder_csv_out.path, 'out_train_used.csv'), sep=',', index=False)
 
 # - Save the config file as .json
 with open(Path(folder_json_out.path, 'residual_arpl_miso_rpms.json'), 'w') as outfile:

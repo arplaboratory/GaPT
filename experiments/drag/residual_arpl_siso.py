@@ -179,7 +179,7 @@ t_tr_kal = training_dataset.timestamp.numpy()
 
 x_tr_kal = x_tr_kal[1200:2400]
 y_tr_kal = y_tr_kal[1200:2400]
-
+t_tr_kal = t_tr_kal[1200:2400]
 
 # a) Get the indexes to sorting elements in the dataset (if used the regressor works as the same as Gpytorch)
 sort_index_tr = np.argsort(x_tr_kal)
@@ -187,11 +187,11 @@ sort_index_tr = np.argsort(x_tr_kal)
 
 # b) Get the rollback indexes
 rollback_indexes_tr = np.empty_like(sort_index_tr)
-rollback_indexes_tr[sort_index_tr] = np.arange(sort_index_tr.size)
+rollback_indexes_tr[sort_index_tr] = np.arange(sort_index_tr.size, dtype=int)
 
 x_tr_kal_sorted = x_tr_kal[sort_index_tr]
 y_tr_kal_sorted = y_tr_kal[sort_index_tr]
-
+t_tr_kal_sorted = t_tr_kal[sort_index_tr]
 
 kf_pred_mean_tr, kf_pred_lower_tr, kf_pred_upper_tr = model.predict_kf_mean_cov(
     x_training=x_tr_kal_sorted, y_training=y_tr_kal_sorted,
@@ -366,8 +366,8 @@ val_tr = [training_unscaled.timestamp.numpy(), training_unscaled.X.squeeze().num
           gpt_pred_mean_tr.numpy(), gpt_pred_lower_tr.numpy(), gpt_pred_upper_tr.numpy(),
           kf_pred_mean_tr, kf_pred_lower_tr, kf_pred_upper_tr]
 
-columns_tr_used = ["x_train_gp", "y_train_gp", "ts_train_gp"]
-val_tr_used = [x_train_gp.squeeze().numpy(), y_train_gp.squeeze().numpy(), ts_train_gp.squeeze().numpy()]
+columns_tr_used = ["t_tr_sort_scal_KF", "x_tr_sort_scal_KF", "y_tr_sort_scal_KF", 'desorting_indexes']
+val_tr_used = [t_tr_kal_sorted, x_tr_kal_sorted, y_tr_kal_sorted, rollback_indexes_tr]
 
 columns_ts = [testing_unscaled.t_column, testing_unscaled.x_column[0], testing_unscaled.y_column,
               "gpt_pred_mean_ts", "gpt_pred_lower_ts", "gpt_pred_upper_ts",
@@ -427,8 +427,8 @@ dict_file = {"axis": "y_drag",
                  "L": L,
                  "H": H,
                  "Q": Q,
-                 "xtrain": xtrain_yaml,
-                 "ytrain": ytrain_yaml,
+                 "xtrain": x_tr_kal_sorted,
+                 "ytrain": y_tr_kal_sorted,
                  "meanY": float(meanY_yaml),
                  "std": float(std_yaml),
              }

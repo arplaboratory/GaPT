@@ -36,29 +36,24 @@ int main(int argc, char** argv)
 	nh.getParam(drag_item+"/ytrain", y_data);	
 	std::cout << "dataset size" << x_data.size() <<std::endl;
 	filter.loadDataset(x_data,y_data);
-	int mid_point =1;//floor(x_data.size()/2);
         state currin;
         currin.Mean = X;
         currin.Covar = Covar;
-        filter.setState(currin,x_data[mid_point]);
+        filter.setState(currin,x_data[0]);
         ofstream outFileEst;
         ofstream outFileTrue;
         outFileEst.open("GP_est.dat");
         outFileTrue.open("GP_True.dat");
         count = 1;
 	state curr = currin;
-	for(int i=mid_point;i<x_data.size();i+=1){
+	for(int i=1;i<x_data.size();i+=1){
 		outFileEst<< x_data[i];
-		ros::Time lasttime=ros::Time::now();
-		curr = filter.gp_regress(x_data[i]+0.02);
-		ros::Time currtime=ros::Time::now();
-		ros::Duration diff=currtime-lasttime;
-		std::cout<<"diff: "<<diff<<endl;
+		curr = filter.gp_regress(x_data[i]);
+		//curr = filter.predict(x_data[i]);
 		outFileEst << " " <<curr.Mean(0)<< endl;
 		curr = filter.update(y_data[i]);
 		outFileTrue<< x_data[i];
 		outFileTrue << " " <<y_data[i]<< endl;
-\
 	}
         GnuplotPipe gp;
         gp.sendLine("plot 'GP_True.dat' , 'GP_est.dat'  ");

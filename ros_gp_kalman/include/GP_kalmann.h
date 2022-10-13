@@ -35,7 +35,7 @@ private:
 	//This is your sensor noise.
 	double R; 
     //This is your covar diffusion matrix
-    Eigen::MatrixXd Q;
+        double Q;
 
 	// This calculated e^(F*dt). This is mostly called by the predict function 
 	Eigen::MatrixXd expm(double dt);

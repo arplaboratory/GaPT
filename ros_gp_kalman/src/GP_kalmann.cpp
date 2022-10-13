@@ -18,19 +18,17 @@ GP_kalmann::GP_kalmann(std::string path_yaml) {
 
 	F = Eigen::MatrixXd::Zero(order, order);
 	H = Eigen::MatrixXd::Zero(1, order );
-	L = Eigen::MatrixXd::Zero(order, order);
-        Q = Eigen::MatrixXd::Zero(order, order);
-
+	L = Eigen::MatrixXd::Zero(1, order );
+        Q = Qin[0];
 	int count = 0;
 	for (int i = 0;i<order;i++){
 		for (int j = 0;j<order;j++){
-			F(i,j) = Fin[count];
-            Q(i,j) = Qin[count];
-            L(i,j) = Lin[count];
-			count +=1;
-        }
+		    F(i,j) = Fin[count];
+                    //Q(i,j) = Qin[count];
+	            count +=1;
+        	}
 		H(0,i) = Hin[i];
-		L(i,0) = Lin[i];
+		L(0,i) = Lin[i];
 	}
 
     std::cout << "Order: " << order <<std::endl;
@@ -70,9 +68,9 @@ Eigen::MatrixXd GP_kalmann::calc_Qs(double dt, Eigen::MatrixXd At) {
     Qv.block(0,0, order, order) = F;
     Qv.block(order, order, order, order)=-F.transpose();
     Qv.block(0,order, order, order) = (L.transpose()*L) * Q;
-	Eigen::MatrixXd EigValScales = (Qv * dt).exp();
-	return EigValScales.block(0, order, order, order) * expm(dt).transpose();
 
+    Eigen::MatrixXd EigValScales = (Qv * dt).exp();
+    return EigValScales.block(0, order, order, order) * expm(dt).transpose();
 }
 
 

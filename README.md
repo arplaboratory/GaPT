@@ -82,6 +82,21 @@ python -m experiments.drag.residual_arpl_siso -c experiments/drag/residual_arpl_
 **NOTE:** If you run the code using and IDE (i.e. Pycharm) the paths in the .json config file may be changed 
 using the absolute path and the path of the config file with the -c flag have to be included in the 'Parameter'
 field of the script configuration.
+SISO Regression scripts runs both ours toolboxes output and the standard Pytorch output for a comparison 
+
+The output of the scripts are in the /out foulder. They include the following 
+
+Foulder Name | Contents
+------------- | -------------
+Configuration  | Content Cell
+data_out | the output of the data in the form of .csv
+figures | Figures demonstrating the output of the Toolbox. 
+Model | A .pth file including the weights of the GaPT Model
+Yaml | A .yaml model file to export to ROS. Only SISO so far. 
 
 
-The output of the scripts are in the out foulder they include.....
+Acronyms      | Meaning
+------------- | -------------
+GT            | Ground Truth
+Kf            | Toolbox Output
+GPT           | Pytorch baseline output

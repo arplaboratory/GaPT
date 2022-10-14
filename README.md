@@ -99,4 +99,4 @@ Acronyms      | Meaning
 ------------- | -------------
 GT            | Ground Truth
 Kf            | Toolbox Output
-GPT           | Pytorch baseline output
+GPT           | GPytorch baseline output

@@ -88,7 +88,7 @@ The output of the scripts are in the /out foulder. They include the following
 
 Foulder Name | Contents
 ------------- | -------------
-Configuration  | Content Cell
+Configuration  | The parameter you used to run the python file 
 data_out | the output of the data in the form of .csv
 figures | Figures demonstrating the output of the Toolbox. 
 Model | A .pth file including the weights of the GaPT Model

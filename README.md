@@ -16,7 +16,16 @@ Please be aware that this code was originally implemented for research purposes 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  ```
-   
+## Citation
+If you publish a paper with this work, please cite our paper: 
+```
+@article{CrocettiMaoICRA2023,
+  url = {https://arxiv.org/abs/2303.08181},
+  Year = {2023},
+  Booktitle = {IEEE International Conference on Robotics and Automation (ICRA)}
+  author = {Crocetti, Francesco and Mao, Jeffrey and Saviolo, Alessandro and Costante, Gabriele and Loianno, Giuseppe},
+  title = {GaPT: Gaussian Process Toolkit for Online Regression with Application to Learning Quadrotor Dynamics}}
+ 
 ## Overview:
 
 GaPT  is a novel toolkit that converts GPs to their state space form and performs regression in

@@ -33,6 +33,9 @@ That means we are working on uploading and upgrading all the functionalities. Fo
 which is the core of the GaPT Framework.
 
 #### Recent Changes
+- 07/26/2023: due to known security vulnerabilities, the requirements.txt file has been modified to install newer versions of 
+  - Scipy ( 1.8.1 -> 1.10.1) 
+  - pytorch (1.10.1 -> 1.13.1)
 - 10/04/2022: First commit, the requirements and the setup.py file will be updated soon: 
 the installation will be automated, now the file requirements.txt is just a freeze of the original virtual environment.
 - Upcoming updates: Installation procedure for desktop x86 devices and Nvidia ARM64 architecture devices. 

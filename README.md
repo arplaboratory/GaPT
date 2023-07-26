@@ -25,7 +25,7 @@ If you publish a paper with this work, please cite our paper:
   Booktitle = {IEEE International Conference on Robotics and Automation (ICRA)}
   author = {Crocetti, Francesco and Mao, Jeffrey and Saviolo, Alessandro and Costante, Gabriele and Loianno, Giuseppe},
   title = {GaPT: Gaussian Process Toolkit for Online Regression with Application to Learning Quadrotor Dynamics}}
- 
+ ```
 ## Overview:
 
 GaPT  is a novel toolkit that converts GPs to their state space form and performs regression in

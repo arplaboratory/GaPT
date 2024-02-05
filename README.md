@@ -27,7 +27,7 @@ If you publish a paper with this work, please cite our paper:
   title = {GaPT: Gaussian Process Toolkit for Online Regression with Application to Learning Quadrotor Dynamics}}
  ```
 ## Overview:
-```
+
 GaPT  is a novel toolkit that converts GPs to their state space form and performs regression in
 linear time. 
 - GaPT is designed to be highly compatible with several optimizers popular in robotics

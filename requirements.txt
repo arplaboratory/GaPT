@@ -9,7 +9,7 @@ roslibpy==1.3.0
 bagpy==0.4.10
 numba==0.52.0
 matplotlib==3.5.3
-torch==1.13.1+cpu
+torch==2.2.0
 torchvision==0.14.1+cpu
 torchaudio==0.13.1
 gpytorch==1.6.0
